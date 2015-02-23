@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">hexgonal-mvp-reactive</string>
+    <string name="title_activity_recent">Recents</string>
+    <string name="title_activity_details">Details</string>
+</resources>

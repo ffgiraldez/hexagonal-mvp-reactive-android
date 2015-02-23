@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+task copyTestResources(type: Copy) {
+    from "${projectDir}/src/test/resources"
+    into "${buildDir}/intermediates/classes/test/debug"
+}
+
+dependencies {
+    provided 'org.projectlombok:lombok:1.14.4'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'io.reactivex:rxandroid:0.24.0'
+
+    testCompile 'junit:junit:4.10'
+    testCompile 'com.github.rest-driver:rest-client-driver:1.1.42'
+    testCompile 'com.squareup.assertj:assertj-android:1.0.0'
+    //see https://github.com/evant/gradle-retrolambda/issues/86
+    testCompile files(System.getenv('JAVA_HOME')+'/jre/lib/rt.jar')
+}

@@ -1,0 +1,27 @@
+# --table-start--
+dataClass=es.ffgiraldez.hmr.books.Book
+tableName=books
+# --table-fields-start--
+# --field-start--
+fieldName=identifier
+columnName=identifier
+id=true
+generatedId=false
+# --field-end--
+# --field-start--
+fieldName=title
+columnName=title
+# --field-end--
+# --field-start--
+fieldName=description
+columnName=description
+# --field-end--
+# --field-start--
+fieldName=cover
+# --field-end--
+# --field-start--
+fieldName=saved
+columnName=saved
+# --field-end--
+# --table-fields-end--
+# --table-end--
