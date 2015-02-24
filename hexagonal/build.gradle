@@ -12,6 +12,7 @@ android {
 dependencies {
     provided 'org.projectlombok:lombok:1.14.4'
     compile 'io.reactivex:rxandroid:0.24.0'
+    compile 'io.reactivex:rxjava-computation-expressions:0.21.0'
     compile project(':openlibra')
 
     testCompile 'junit:junit:4.10'

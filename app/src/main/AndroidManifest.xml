@@ -22,8 +22,6 @@
         <activity
             android:name=".details.ui.DetailsActivity"
             android:label="@string/title_activity_details" />
-
-        <service android:name="es.ffgiraldez.hmr.android.executors.BookService" />
     </application>
 
 </manifest>

@@ -1,10 +1,8 @@
 package es.ffgiraldez.hmr.recents;
 
-import es.ffgiraldez.hmr.books.BookClient;
-import es.ffgiraldez.hmr.executors.Executor;
-import es.ffgiraldez.hmr.executors.From;
 import lombok.RequiredArgsConstructor;
 import rx.Observable;
+import rx.schedulers.Schedulers;
 /**
  * @author Fernando Franco Giráldez
  */
@@ -13,13 +11,12 @@ public class RecentInteractor {
     // ----------------------------------
     // ATTRIBUTES
     // ----------------------------------
-    private final Executor executor;
-    private final BookClient client;
+    private final RecentDataSource dataSource;
 
     // ----------------------------------
     // PUBLIC API
     // ----------------------------------
     public Observable<RecentBooks> recent() {
-        return executor.execute(RecentBooks.class, new RecentRequest(client), From.BOTH);
+        return dataSource.retrieve().subscribeOn(Schedulers.io());
     }
 }

@@ -4,7 +4,7 @@ This project show my travel to find an architecture on Android that follow the [
 
 ##Summary
 * [MVP Architecture][2] to separate Android Framework with an [hexagonal architecture][3] to my domain logic.
-* Asynchronous communications implemented with [Robospice][4] flavored with [RxJava][5].
+* Asynchronous communications implemented with [RxJava][5].
 * Dependency Injection implemented via [Dagger][6]
 * Rest API from [Openlibra][7]
 
@@ -12,7 +12,6 @@ TODO LIST
 ---------
 
 * Better UI, with Material Design concepts and so on.
-* Remove the package ```executor``` and use all RxJava potencial.
 * Add More Tests, allways fail on that :(
 
 Developed By
@@ -47,7 +46,6 @@ License
 [1]: http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29
 [2]: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
 [3]: http://alistair.cockburn.us/Hexagonal+architecture
-[4]: https://github.com/stephanenicolas/robospice
 [5]: https://github.com/ReactiveX/RxJava
 [6]: https://github.com/square/dagger
 [7]: http://openlibra.com

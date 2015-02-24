@@ -35,15 +35,12 @@ android {
 
 dependencies {
     provided 'org.projectlombok:lombok:1.14.4'
+    provided 'com.squareup.dagger:dagger-compiler:1.2.2'
     compile 'com.android.support:cardview-v7:21.0.0'
     compile 'com.android.support:appcompat-v7:21.0.3'
-    provided 'com.squareup.dagger:dagger-compiler:1.2.2'
     compile 'com.squareup.dagger:dagger:1.2.2'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'io.reactivex:rxandroid:0.24.0'
-    compile('com.octo.android.robospice:robospice:1.4.14') {
-        exclude group: 'org.apache.commons', module: 'commons-io'
-    }
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.squareup.picasso:picasso:2.4.0'
     compile project(':hexagonal')

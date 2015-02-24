@@ -6,7 +6,6 @@ import es.ffgiraldez.hmr.android.OpenLibraActivity;
 import es.ffgiraldez.hmr.android.OpenLibraApplication;
 import es.ffgiraldez.hmr.android.books.BookModule;
 import es.ffgiraldez.hmr.android.details.DetailsModule;
-import es.ffgiraldez.hmr.android.executors.ExecutorModule;
 import es.ffgiraldez.hmr.android.navigation.AndroidNavigatorModule;
 import es.ffgiraldez.hmr.android.persistence.PersistenceModule;
 import es.ffgiraldez.hmr.android.recents.RecentModule;
@@ -28,7 +27,6 @@ public class Modules {
     public static Object[] activity(OpenLibraActivity activity) {
         return new Object[] {
             new ActivityModule(activity),
-            new ExecutorModule(),
             new RecentModule(),
             new AndroidNavigatorModule(),
             new DetailsModule()
