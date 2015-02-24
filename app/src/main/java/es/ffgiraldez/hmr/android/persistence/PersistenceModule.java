@@ -15,10 +15,7 @@ import es.ffgiraldez.hmr.recents.RecentRepository;
  */
 @Module(
         library = true,
-        complete = false,
-        injects = {
-                RecentObjectPersister.class
-        }
+        complete = false
 )
 public class PersistenceModule {
     // ----------------------------------

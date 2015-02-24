@@ -34,7 +34,7 @@ public class OpenLibraGsonConverter extends GsonConverter {
             content = readBytes(body.in());
             content = Arrays.copyOfRange(content, 1, content.length - 2);
         } catch (IOException e) {
-            e.printStackTrace();
+           System.out.println("error parsing body: " + e.getMessage());
         }
 
         TypedInput sanitized = new TypedByteArray(body.mimeType(), content);

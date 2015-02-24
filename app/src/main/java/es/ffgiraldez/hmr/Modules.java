@@ -13,6 +13,9 @@ import es.ffgiraldez.hmr.android.recents.RecentModule;
  * @author Fernando Franco Giráldez
  */
 public class Modules {
+    private Modules() {
+
+    }
     // ----------------------------------
     // PUBLIC API
     // ----------------------------------

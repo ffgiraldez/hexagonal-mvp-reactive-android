@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
+
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"

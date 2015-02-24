@@ -10,6 +10,7 @@ import es.ffgiraldez.hmr.details.DetailsNavigation;
 import es.ffgiraldez.hmr.navigation.Navigation;
 import es.ffgiraldez.hmr.navigation.Navigator;
 import rx.Observable;
+import rx.schedulers.Schedulers;
 import rx.subjects.PublishSubject;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,7 +42,7 @@ public class RecentPresenterTest {
 
         when(ui.onBookClick()).thenReturn(click);
 
-        presenter = new RecentPresenter(interactor, navigator);
+        presenter = new RecentPresenter(interactor, navigator, Schedulers.immediate());
         presenter.initialize(ui);
 
     }

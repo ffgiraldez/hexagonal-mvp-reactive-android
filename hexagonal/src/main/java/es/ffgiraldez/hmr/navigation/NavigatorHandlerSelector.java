@@ -16,12 +16,10 @@ public class NavigatorHandlerSelector {
     // ----------------------------------
     // CONSTRUCTOR
     // ----------------------------------
-    protected NavigatorHandlerSelector(List<AbstractNavigatorHandler<? extends  Navigation>> handlers) {
-        if (handlers == null) {
-            handlers = new ArrayList<>();
-        }
+    protected NavigatorHandlerSelector(List<AbstractNavigatorHandler<? extends Navigation>> handlers) {
+        List<AbstractNavigatorHandler<? extends Navigation>> list = handlers != null ? handlers : new ArrayList<>();
         map = new HashMap<>();
-        for (AbstractNavigatorHandler<? extends  Navigation> handler : handlers) {
+        for (AbstractNavigatorHandler<? extends Navigation> handler : list) {
             map.put(handler.handlerClass(), handler);
         }
     }
@@ -43,7 +41,7 @@ public class NavigatorHandlerSelector {
     private static class IgnoredNavigatorHandler implements NavigatorHandler {
         @Override
         public void handle(Navigation navigation) {
-
+            System.out.println("Ignored navigation: " + navigation.getClass().getName());
         }
     }
 }

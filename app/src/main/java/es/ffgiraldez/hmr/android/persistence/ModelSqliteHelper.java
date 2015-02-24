@@ -22,12 +22,13 @@ public class ModelSqliteHelper extends OrmLiteSqliteOpenHelper {
     // ----------------------------------
     private static final String TAG = ModelSqliteHelper.class.getSimpleName();
     private static final String DATABASE_NAME = "youtubers.db";
+    private static final int DATABASE_VERSION = 1;
 
     // ----------------------------------
     // CONSTRUCTOR
     // ----------------------------------
     public ModelSqliteHelper(Context context) {
-        super(context, DATABASE_NAME, null, Persistence.DATABASE_VERSION, R.raw.ormlite_config);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
     }
 
     // ----------------------------------
@@ -42,7 +43,7 @@ public class ModelSqliteHelper extends OrmLiteSqliteOpenHelper {
             Log.v(TAG, "Creating tables...");
             TableUtils.createTable(connectionSource, Book.class);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error creating database :(",e );
         }
 
 
@@ -50,6 +51,6 @@ public class ModelSqliteHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
-
+        Log.d(TAG, String.format("upgrading database from: %d to: %d", oldVersion, newVersion));
     }
 }
