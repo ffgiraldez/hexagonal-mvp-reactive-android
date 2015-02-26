@@ -21,12 +21,12 @@ public class RecentDataSource {
     public Observable<RecentBooks> retrieve() {
         Observable<RecentBooks> db = Observable.create(subscriber -> subscriber.onNext(repo.retrieve()));
         Observable<RecentBooks> net = Observable.create(subscriber -> subscriber.onNext(client.recent()));
-        net.flatMap(books -> {
+        Observable<RecentBooks> cached = net.flatMap(books -> {
             repo.save(books);
             return db;
         });
         return Observable.create(
-                new OperatorIfThen<>(() -> !repo.retrieve().isEmpty(), db, net)
+                new OperatorIfThen<>(() -> !repo.retrieve().isEmpty(), db, cached)
         );
     }
 }
