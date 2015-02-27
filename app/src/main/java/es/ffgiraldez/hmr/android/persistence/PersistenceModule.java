@@ -9,6 +9,8 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import es.ffgiraldez.hmr.books.Book;
+import es.ffgiraldez.hmr.books.BookClient;
+import es.ffgiraldez.hmr.recents.RecentDataSource;
 import es.ffgiraldez.hmr.recents.RecentRepository;
 /**
  * @author Fernando Franco Giráldez
@@ -38,5 +40,10 @@ public class PersistenceModule {
     @Singleton
     public RecentRepository providesFeedRepository(final RuntimeExceptionDao<Book, String> bookDao) {
         return new OrmRecentRepository(bookDao);
+    }
+
+    @Provides
+    public RecentDataSource providesRecentDataSource(final RecentRepository repo, final BookClient client) {
+        return new RecentDataSource(repo, client);
     }
 }

@@ -1,8 +1,9 @@
 package es.ffgiraldez.hmr.recents;
 
+import es.ffgiraldez.hmr.schedulers.SchedulerProvider;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import rx.Observable;
-import rx.schedulers.Schedulers;
 /**
  * @author Fernando Franco Giráldez
  */
@@ -11,12 +12,14 @@ public class RecentInteractor {
     // ----------------------------------
     // ATTRIBUTES
     // ----------------------------------
+    @NonNull
     private final RecentDataSource dataSource;
+    private final SchedulerProvider schedulers;
 
     // ----------------------------------
     // PUBLIC API
     // ----------------------------------
     public Observable<RecentBooks> recent() {
-        return dataSource.retrieve().subscribeOn(Schedulers.io());
+        return dataSource.retrieve().cache().subscribeOn(schedulers.io());
     }
 }

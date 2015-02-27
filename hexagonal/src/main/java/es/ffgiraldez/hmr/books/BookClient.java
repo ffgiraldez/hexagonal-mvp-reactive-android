@@ -7,7 +7,6 @@ import es.ffgiraldez.hmr.recents.RecentBooks;
 import es.ffgiraldez.hmr.rest.Endpoint;
 import lombok.RequiredArgsConstructor;
 import rx.Observable;
-import rx.schedulers.Schedulers;
 /**
  * @author Fernando Franco Giráldez
  */
@@ -32,7 +31,6 @@ public class BookClient {
                                         .description(response.description())
                                         .build()
                 ).toList()
-                .subscribeOn(Schedulers.immediate())
                 .subscribe(reference::set);
         return new RecentBooks(reference.get());
     }

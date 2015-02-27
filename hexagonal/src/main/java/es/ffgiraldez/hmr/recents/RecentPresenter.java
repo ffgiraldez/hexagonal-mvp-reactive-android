@@ -2,9 +2,9 @@ package es.ffgiraldez.hmr.recents;
 
 import es.ffgiraldez.hmr.details.DetailsNavigation;
 import es.ffgiraldez.hmr.navigation.Navigator;
+import es.ffgiraldez.hmr.schedulers.SchedulerProvider;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import rx.Scheduler;
 import rx.subscriptions.CompositeSubscription;
 /**
  * @author Fernando Franco Giráldez
@@ -17,7 +17,7 @@ public class RecentPresenter {
     private final CompositeSubscription subscriptions = new CompositeSubscription();
     private final RecentInteractor interactor;
     private final Navigator navigator;
-    private final Scheduler sheduler;
+    private final SchedulerProvider schedulers;
     private RecentUserInterface ui;
 
     // ----------------------------------
@@ -32,7 +32,7 @@ public class RecentPresenter {
     public void load() {
         subscriptions.add(
                 interactor.recent()
-                        .observeOn(sheduler)
+                        .observeOn(schedulers.ui())
                         .subscribe(ui::show)
         );
     }

@@ -5,13 +5,11 @@ import dagger.Provides;
 import es.ffgiraldez.hmr.android.books.BookModule;
 import es.ffgiraldez.hmr.android.recents.ui.RecentActivity;
 import es.ffgiraldez.hmr.android.recents.ui.RecentFragment;
-import es.ffgiraldez.hmr.books.BookClient;
 import es.ffgiraldez.hmr.navigation.Navigator;
 import es.ffgiraldez.hmr.recents.RecentDataSource;
 import es.ffgiraldez.hmr.recents.RecentInteractor;
 import es.ffgiraldez.hmr.recents.RecentPresenter;
-import es.ffgiraldez.hmr.recents.RecentRepository;
-import rx.android.schedulers.AndroidSchedulers;
+import es.ffgiraldez.hmr.schedulers.SchedulerProvider;
 /**
  * @author Fernando Franco Giráldez
  */
@@ -31,16 +29,14 @@ public class RecentModule {
     // PUBLIC API
     // ----------------------------------
     @Provides
-    public RecentPresenter providesPresenter(final RecentInteractor interactor, final Navigator navigator) {
-        return new RecentPresenter(interactor, navigator, AndroidSchedulers.mainThread());
+    public RecentPresenter providesPresenter(final RecentInteractor interactor, final Navigator navigator, final SchedulerProvider schedulers) {
+        return new RecentPresenter(interactor, navigator, schedulers);
     }
 
     @Provides
-    public RecentInteractor providesInteractor(final RecentDataSource dataSource) {
-        return new RecentInteractor(dataSource);
+    public RecentInteractor providesInteractor(final RecentDataSource dataSource, final SchedulerProvider schedulers) {
+        return new RecentInteractor(dataSource, schedulers);
     }
 
-    @Provides RecentDataSource providesRecentDataSource(final RecentRepository repo, final BookClient client) {
-        return new RecentDataSource(repo, client);
-    }
+
 }
